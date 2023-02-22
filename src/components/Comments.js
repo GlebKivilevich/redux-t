@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { commentCreate, commentsLoad } from '../redux/actions';
+import { createComment } from './CommentsSlice';
 import SingleComment from './SingleComment';
 import uniqid from 'uniqid';
+import { fetchComment } from './CommentsSlice';
 
 function Comments(props) {
   const [textComment, setTextComment] = useState('');
-  // const comments = useSelector((state) => {
-  //   const { commentsReducer } = state;
-  //   return commentsReducer.comments;
-  // });
+
+  const { comments } = useSelector((state) => state.comments);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchComment());
+  }, []);
 
   const handleInput = (e) => {
     setTextComment(e.target.value);
@@ -20,13 +24,17 @@ function Comments(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const id = uniqid();
-    dispatch(commentCreate(textComment, id));
+    const obj = {
+      id,
+      body: textComment,
+    };
+    dispatch(createComment(obj));
     setTextComment('');
   };
 
   useEffect(() => {
-    dispatch(commentsLoad())
-  }, [])
+    dispatch(commentsLoad());
+  }, []);
 
   return (
     <div className="card-comments">
@@ -34,7 +42,7 @@ function Comments(props) {
         <input type="text" placeholder="Написать комментарий..." value={textComment} onChange={handleInput} />
         <input type="submit" hidden />
       </form>
-      {/* {!!comments.length ? (
+      {!!comments.length ? (
         comments.map((res) => {
           return <SingleComment key={res.id} data={res} />;
         })
@@ -42,7 +50,7 @@ function Comments(props) {
         <h2 style={{ justifyContent: 'center', height: '50%', display: 'flex', alignItems: 'center' }}>
           У вас нет комментариев
         </h2>
-      )} */}
+      )}
     </div>
   );
 }
