@@ -7,7 +7,6 @@ const titleSlice = createSlice({
   initialState,
   reducers: {
     createText: (state, action) => {
-      console.log(action);
       state.text = action.payload;
     },
   },
