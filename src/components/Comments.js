@@ -6,10 +6,10 @@ import uniqid from 'uniqid';
 
 function Comments(props) {
   const [textComment, setTextComment] = useState('');
-  const comments = useSelector((state) => {
-    const { commentsReducer } = state;
-    return commentsReducer.comments;
-  });
+  // const comments = useSelector((state) => {
+  //   const { commentsReducer } = state;
+  //   return commentsReducer.comments;
+  // });
 
   const dispatch = useDispatch();
 
@@ -34,7 +34,7 @@ function Comments(props) {
         <input type="text" placeholder="Написать комментарий..." value={textComment} onChange={handleInput} />
         <input type="submit" hidden />
       </form>
-      {!!comments.length ? (
+      {/* {!!comments.length ? (
         comments.map((res) => {
           return <SingleComment key={res.id} data={res} />;
         })
@@ -42,7 +42,7 @@ function Comments(props) {
         <h2 style={{ justifyContent: 'center', height: '50%', display: 'flex', alignItems: 'center' }}>
           У вас нет комментариев
         </h2>
-      )}
+      )} */}
     </div>
   );
 }

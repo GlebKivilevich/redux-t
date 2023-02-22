@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { inputText } from '../redux/actions';
 
 function Title(props) {
-  const text = useSelector((state) => {
-    const { inputReducer } = state;
-    return inputReducer.text;
-  });
+  // const text = useSelector((state) => {
+  //   const { inputReducer } = state;
+  //   return inputReducer.text;
+  // });
   const dispatch = useDispatch();
 
   const handelChange = (e) => {
@@ -17,7 +17,7 @@ function Title(props) {
       <div className="card-title-top">
         <input type="text" onChange={handelChange} />
       </div>
-      <p>{text}</p>
+      {/* <p>{text}</p> */}
     </div>
   );
 }

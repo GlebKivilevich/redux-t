@@ -5,8 +5,8 @@ import { commentsReducer } from './commentsReducer';
 import { appReducer } from './appReducer';
 
 export const rootReducer = combineReducers({
-  likesReducer,
-  dislikeReducer,
+  // likesReducer,
+  // dislikeReducer,
   inputReducer,
   commentsReducer,
   appReducer,
