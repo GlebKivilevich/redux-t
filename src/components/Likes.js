@@ -1,5 +1,5 @@
 import React from 'react';
-import { incrementLike, decrementLike } from '../components/likesSplit';
+import { incrementLike, decrementLike } from './likesSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 function Likes(props) {

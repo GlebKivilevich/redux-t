@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import likes from '../components/likesSplit';
+import likes from '../components/likesSlice';
+import comments from '../components/CommentsSlice';
 
 // function spamFilter(store) {
 //   return function (next) {
@@ -16,7 +17,7 @@ import likes from '../components/likesSplit';
 // }
 
 const store = configureStore({
-  reducer: {likes},
+  reducer: { likes, comments },
   // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),
   devTools: 'development',
 });

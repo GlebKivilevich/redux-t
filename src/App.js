@@ -2,7 +2,7 @@ import './App.css';
 import Likes from './components/Likes';
 import Title from './components/Title';
 import { useDispatch, useSelector } from 'react-redux';
-import { incrementLike } from './components/likesSplit';
+import { incrementLike } from './components/likesSlice';
 import Comments from './components/Comments';
 import Spin from './components/Spin';
 
