@@ -1,23 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { inputText } from '../redux/actions';
+import { createText } from './titleSlice';
+// import { inputText } from '../redux/actions';
 
 function Title(props) {
-  // const text = useSelector((state) => {
-  //   const { inputReducer } = state;
-  //   return inputReducer.text;
-  // });
+  const { text } = useSelector((state) => state.titel);
+  const [textComm, setTextComm] = useState('');
   const dispatch = useDispatch();
 
-  const handelChange = (e) => {
-    dispatch(inputText(e.target.value));
+  const handelChangeInput = (e) => {
+    setTextComm(e.target.value);
   };
+
+  const submitChange = (e) => {
+    e.preventDefault();
+    dispatch(createText(textComm));
+    setTextComm('');
+  };
+
   return (
-    <div className="card-title">
-      <div className="card-title-top">
-        <input type="text" onChange={handelChange} />
-      </div>
-      {/* <p>{text}</p> */}
+    <div className="card-title" onSubmit={submitChange}>
+      <form className="card-title-top">
+        <input type="text" value={textComm} onChange={handelChangeInput} />
+        <input type="submit" hidden />
+      </form>
+      <p>{text}</p>
     </div>
   );
 }

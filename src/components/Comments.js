@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { commentCreate, commentsLoad } from '../redux/actions';
-import { createComment } from './CommentsSlice';
 import SingleComment from './SingleComment';
 import uniqid from 'uniqid';
-import { fetchComment } from './CommentsSlice';
+import { fetchComment, createComment } from './CommentsSlice';
 
 function Comments(props) {
   const [textComment, setTextComment] = useState('');
