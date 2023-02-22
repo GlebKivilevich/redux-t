@@ -22,7 +22,7 @@ export const commentsReducer = (state = initialState, action) => {
       })
       return {
         ...state,
-        comments:commentsNew,
+        comments: commentsNew,
       };
 
     case COMMENT_UPDATE:

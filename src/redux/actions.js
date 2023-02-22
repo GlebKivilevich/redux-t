@@ -70,10 +70,11 @@ export function errorOn(text) {
       type: ERROR_DISPLAY_ON,
       text,
     });
-    
-    setTimeout(() => {dispatch(errorOff())}, 2500);
+
+    setTimeout(() => {
+      dispatch(errorOff());
+    }, 2500);
   };
-  
 }
 
 export function errorOff() {
