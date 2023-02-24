@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { commentUpdate, commentDelete } from '../redux/actions';
-import { deleteComment } from './CommentsSlice';
+import { deleteComment, updateComment } from './CommentsSlice';
 
 function SingleComment({ data }) {
   const [commentText, setCommentText] = useState('');
   const { body, id } = data;
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,7 +20,7 @@ function SingleComment({ data }) {
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    dispatch(commentUpdate(commentText, id));
+    dispatch(updateComment({ commentText, id }));
   };
 
   const handleDelete = (e) => {
@@ -29,7 +29,7 @@ function SingleComment({ data }) {
   };
 
   return (
-    <form onSubmit={handleUpdate} className="comments-item" key={id}>
+    <form onSubmit={handleUpdate} className="comments-item" key={id - 1}>
       <div onClick={handleDelete} className="comments-item-delete">
         &times;
       </div>

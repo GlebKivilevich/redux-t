@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { commentCreate, commentsLoad } from '../redux/actions';
 import SingleComment from './SingleComment';
 import uniqid from 'uniqid';
 import { fetchComment, createComment } from './CommentsSlice';
@@ -31,17 +30,13 @@ function Comments(props) {
     setTextComment('');
   };
 
-  useEffect(() => {
-    dispatch(commentsLoad());
-  }, []);
-
   return (
     <div className="card-comments">
       <form onSubmit={handleSubmit} className="comments-item-create">
         <input type="text" placeholder="Написать комментарий..." value={textComment} onChange={handleInput} />
         <input type="submit" hidden />
       </form>
-      {!!comments.length ? (
+      {comments && !!comments.length ? (
         comments.map((res) => {
           return <SingleComment key={res.id} data={res} />;
         })
